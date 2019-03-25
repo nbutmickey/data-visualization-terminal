@@ -1,7 +1,7 @@
 <template>
   <div class="realTime-box" :style="realTimeStyle">
     <div class="panel" v-if="chooseRealTimeData.some((item)=>{if(item==='pv'||item==='uv')return true;return false})">
-      <p class="title">--实时访问量--</p>
+      <p class="title">- 实时访问量 -</p>
       <div :class="templateType===1||templateType===5?'change-layout':'layout'">
         <pv-panel v-if="chooseRealTimeData.includes('pv')"></pv-panel>
         <uv-panel v-if="chooseRealTimeData.includes('uv')"></uv-panel>
@@ -30,37 +30,7 @@
           scrollList
         },
         data(){
-          return {
-            pvNumber:234,
-            uvNumber:123,
-            listData: [{ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'},
-              {ip:'47.28.153.24',target:'/mickey/blog/index.html',date:'2017-05-18 13:30'}]
-          }
+          return {}
         }
     }
 </script>

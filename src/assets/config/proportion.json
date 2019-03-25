@@ -1,0 +1,44 @@
+[
+  {
+    "label": "statisticalDataOne",
+    "text": "请求方式占比",
+    "graphStyle":[
+      { "label": "styleOne", "text": "基础环形图","bgurl":"../../static/bg-statistical/basicPine.JPG"}
+    ]
+  },
+  {
+    "label": "statisticalDataTwo",
+    "text": "客户端浏览器、操作系统占比",
+    "graphStyle":[
+      { "label": "styleTwo", "text": "基础饼图" ,"bgurl":"../../static/bg-statistical/pie.JPG"}
+    ]
+  },
+  {
+    "label": "statisticalDataThree",
+    "text": "IP地址省份占比",
+    "graphStyle":[
+      { "label": "styleOne", "text": "基础环形图","bgurl":"../../static/bg-statistical/basicPine.JPG"}
+    ]
+  },
+  {
+    "label": "statisticalDataFour",
+    "text": "HTTP状态码占比",
+    "graphStyle":[
+      { "label": "styleOne", "text": "基础环形图","bgurl":"../../static/bg-statistical/basicPine.JPG"}
+    ]
+  },
+  {
+    "label": "statisticalDataFive",
+    "text": "客户端&服务端访问失败页面(TOP 5)占比",
+    "graphType": [
+      { "label": "styleTwo", "text": "基础饼图" ,"bgurl":"../../static/bg-statistical/pie.JPG"}
+    ]
+  },
+  {
+    "label": "statisticalDataSix",
+    "text": "访问频次较多页面(TOP 5)占比",
+    "graphStyle":[
+      { "label": "styleOne", "text": "基础环形图","bgurl":"../../static/bg-statistical/basicPine.JPG"}
+    ]
+  }
+]

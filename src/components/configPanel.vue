@@ -138,6 +138,7 @@ export default {
             message:res.message,
             type:'success'
           })
+          this.$store.commit('SET_FETCHHISTORY_LIST',true);
         }else{
           this.$message({
             message:res.message,

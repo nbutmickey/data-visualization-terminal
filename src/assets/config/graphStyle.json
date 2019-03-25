@@ -1,0 +1,63 @@
+{
+  "normalPanel": [
+    {
+      "label": "styleSeven",
+      "text": "用户数据面板",
+      "bgurl": "../../static/bg-statistical/userData.JPG"
+    },
+    {
+      "label": "styleEight",
+      "text": "蜘蛛来访面板",
+      "bgurl": "../../static/bg-statistical/spinder.JPG"
+    },
+    {
+      "label": "styleNine",
+      "text": "请求来源面板",
+      "bgurl": "../../static/bg-statistical/originUrl.JPG"
+    },
+    {
+      "label": "styleTen",
+      "text": "请求来源城市面板",
+      "bgurl": "../../static/bg-statistical/originCity.JPG"
+    },
+    {
+      "label": "styleEleven",
+      "text": "状态码面板",
+      "bgurl": "../../static/bg-statistical/statusCode.JPG"
+    },
+    {
+      "label": "styleTweleve",
+      "text": "最受欢迎页面面板",
+      "bgurl": "../../static/bg-statistical/popularPage.JPG"
+    }
+  ],
+  "number": [
+    {
+      "label": "styleFour",
+      "text": "分组柱状图",
+      "bgurl": "../../static/bg-statistical/group.JPG"
+    },
+    {
+      "label": "styleFive",
+      "text": "简单柱状图",
+      "bgurl": "../../static/bg-statistical/simpleHistoGram.JPG"
+    },
+    {
+      "label": "styleSix",
+      "text": "基础柱状图(纵向)",
+      "bgurl": "../../static/bg-statistical/basicBarChart.JPG"
+    }
+  ],
+  "proportion": [
+    {
+      "label": "styleOne",
+      "text": "基础环形图",
+      "bgurl": "../../static/bg-statistical/basicPine.JPG"
+    },
+    {
+      "label": "styleTwo",
+      "text": "基础饼图",
+      "bgurl": "../../static/bg-statistical/pie.JPG"
+    }
+  ]
+}

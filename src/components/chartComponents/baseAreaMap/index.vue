@@ -14,15 +14,20 @@
 
 <script>
   const data = [
-    { tick: '1991', count: 15468 },
-    { tick: '1992', count: 16100 },
-    { tick: '1993', count: 15900 },
-    { tick: '1994', count: 17409 },
-    { tick: '1995', count: 17000 },
-    { tick: '1996', count: 31056 },
-    { tick: '1997', count: 31982 },
-    { tick: '1998', count: 32040 },
-    { tick: '1999', count: 33233 },
+    { tick: '00:00', count: 15468 },
+    { tick: '02:00', count: 16100 },
+    { tick: '04:00', count: 15900 },
+    { tick: '06:00', count: 17409 },
+    { tick: '08:00', count: 97000 },
+    { tick: '09:00', count: 61056 },
+    { tick: '10:00', count: 81982 },
+    { tick: '12:00', count: 12040 },
+    { tick: '14:00', count: 23233 },
+    { tick: '16:00', count: 57000 },
+    { tick: '18:00', count: 61056 },
+    { tick: '20:00', count: 71982 },
+    { tick: '22:00', count: 22040 },
+    { tick: '24:00', count: 19233 },
   ];
   import {mapGetters} from 'vuex'
     export default {

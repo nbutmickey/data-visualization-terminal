@@ -6,8 +6,8 @@
       <v-coord type="rect" direction="LT" />
       <v-tooltip />
       <v-legend :position="position"/>
-      <v-axis dataKey="value" :label="label" position="right" :grid="null"/>
-      <v-axis dataKey="label" :label="label" />
+      <v-axis dataKey="value" :label="label" :line="{strokeOpacity:1}" :tickLine="{strokeOpacity:1}"  position="right" :grid="null"/>
+      <v-axis dataKey="label" :label="label"  />
       <v-bar position="label*value" color="type" :adjust="adjust" />
     </v-chart>
   </div>

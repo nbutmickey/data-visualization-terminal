@@ -5,6 +5,29 @@ Vue.use(Vuex)
 
 const config={
   actions:{
+    submitReconfig({commit},params){
+      return new Promise((resolve,reject)=>{
+        axios({
+          method:'GET',
+          url:`/api/reConfig?id=${params.id}`
+        }).then(res=>{
+          //alert(res.data);
+          resolve(res.data)
+        })
+      })
+    },
+
+    //获取历史配置
+    getHistoryConfig(){
+      return new Promise((resolve,reject)=>{
+        axios({
+          method:'GET',
+          url:`/api/getDesignConfig`
+        }).then(res=>{
+          resolve(res.data)
+        })
+      })
+    },
     //更新配置
     UpdatConfig({commit,state}){
       return new Promise((resolve,reject)=>{
@@ -51,39 +74,6 @@ const config={
         }
         //消除浅拷贝
         let newConfig = JSON.parse(JSON.stringify(config));
-
-        switch (state.templateType){
-          case 1:
-            newConfig.trendConfig.trendWidth='490';
-            newConfig.trendConfig.trendHeight='250';
-            newConfig.statisticalConfig.statisticalWidth='740';
-            newConfig.statisticalConfig.statisticalHeight='260';
-            break;
-          case 2:
-            newConfig.trendConfig.trendWidth='670';
-            newConfig.trendConfig.trendHeight='300';
-            newConfig.statisticalConfig.statisticalWidth='880';
-            newConfig.statisticalConfig.statisticalHeight='260';
-            break;
-          case 3:
-            newConfig.trendConfig.trendWidth='670';
-            newConfig.trendConfig.trendHeight='300';
-            newConfig.statisticalConfig.statisticalWidth='880';
-            newConfig.statisticalConfig.statisticalHeight='270';
-            break;
-          case 4:
-            newConfig.trendConfig.trendWidth='820';
-            newConfig.trendConfig.trendHeight='300';
-            newConfig.statisticalConfig.statisticalWidth='820';
-            newConfig.statisticalConfig.statisticalHeight='350';
-            break;
-          case 5:
-            newConfig.trendConfig.trendWidth='650';
-            newConfig.trendConfig.trendHeight='300';
-            newConfig.statisticalConfig.statisticalWidth='650';
-            newConfig.statisticalConfig.statisticalHeight='350';
-            break;
-        }
         //console.log(newConfig);
         axios.post('/api/submitConfig',{newConfig:newConfig}).then(res=>{
           //console.log(res.data);
@@ -113,11 +103,15 @@ const config={
       statisticalWidth:'',
       statisticalHeight:'',
       statisticalType:[]
-    }
+    },
+    fetchHistoryList:false,
     },
   mutations:{
+    SET_FETCHHISTORY_LIST(state,status){
+      state.fetchHistoryList=status;
+    },
     SET_HEADER_TITLE(state,title){
-      console.log(title);
+      //console.log(title);
       state.headerTitle=title;
     },
     SET_CUR_STEP(state,nextStep){
@@ -139,8 +133,10 @@ const config={
       state.chooseTrendData.trendHeight=layout.height;
     },
     SET_LINE_CHART_TYPE(state,chartType){
-      //console.log(state.chooseTrendData);
       state.chooseTrendData.lineChartType.push(chartType);
+    },
+    SET_LINE_CHART_TYPE_ALL(state,chartType){
+      state.chooseTrendData.lineChartType=chartType;
     },
     SET_STATISTICAL_LAYOUT(state,layout){
       state.chooseStatisticalData.statisticalWidth=layout.width;
@@ -148,6 +144,9 @@ const config={
     },
     SET_STATISTICAL_TYPE(state,statisticalType){
       state.chooseStatisticalData.statisticalType.push(statisticalType);
+    },
+    SET_STATISTICAL_TYPE_ALL(state,statisticalType){
+      state.chooseStatisticalData.statisticalType=statisticalType;
     }
   },
   getters:{
@@ -161,7 +160,8 @@ const config={
     trendHeight:state=>state.chooseTrendData.trendHeight,
     statisticalWidth:state=>state.chooseStatisticalData.statisticalWidth,
     statisticalHeight:state=>state.chooseStatisticalData.statisticalHeight,
-    statisticalType:state=>state.chooseStatisticalData.statisticalType
+    statisticalType:state=>state.chooseStatisticalData.statisticalType,
+    fetchHistoryList:state=>state.fetchHistoryList
   }
 }
 

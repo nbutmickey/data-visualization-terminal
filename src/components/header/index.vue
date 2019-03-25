@@ -1,6 +1,11 @@
 <template>
 <div class="header">
   <div class="header-bg" :style="{backgroundImage: 'url(' + titleBgUrl + ')',backgroundSize:'100% 100%'}">
+    <p class="weather">
+      <span><i class="iconfont icon-position" style="font-size: 22px"></i> 宁波</span>
+      <span><i class="iconfont icon-tianqi-7" style="font-size: 22px"></i> 阴转小雨</span>
+      <span><i class="iconfont icon-temperature" style="font-size: 22px"></i> 7℃~10℃</span>
+    </p>
     <h1 class="title">{{headerTitle}}</h1>
     <p class="time">{{formatTime(date)}}</p>
   </div>
@@ -63,8 +68,21 @@
     box-sizing: border-box;
     width: 100%;
     height: 80px;
-    padding:0 50px;
+    padding:0 10px;
+    .weather{
+      width: 100%;
+      font-size: 16px;
+      display: inline-block;
+      width: 30%;
+      //margin-bottom: 0;
+      color: #25f3e6;
+      span{
+        margin-left: 8px;
+      }
+    }
     .title{
+      width: 40%;
+      display: inline-block;
       text-align: center;
       color: #fff;
       margin: 0;
@@ -72,8 +90,10 @@
       font-size: 30px;
     }
     .time{
-      margin-top: -20px;
-      margin-bottom: 0;
+      width: 20%;
+      display: inline-block;
+      font-family: Digital;
+      font-size: 22px;
       color: #25f3e6;
       text-align: right;
     }

@@ -13,6 +13,8 @@ export default {
 </script>
 
 <style lang="less">
+  @import "assets/font/digital/stylesheet.css";
+  @import "assets/font/acens/stylesheet.css";
   #app{
     width: 100%;
     height: 100%;

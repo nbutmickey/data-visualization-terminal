@@ -14,11 +14,11 @@
 
 <script>
   const data = [
-    { country: '中国', population: 1344 },
-    { country: '印度', population: 1970 },
-    { country: '美国', population: 2034 },
-    { country: '印尼', population: 2489 },
-    { country: '巴西', population: 1803 },
+    { country: 'TEST 1', population: 1344 },
+    { country: 'TEST 2', population: 1970 },
+    { country: 'TEST 3', population: 2034 },
+    { country: 'TEST 4', population: 2489 },
+    { country: 'TEST 6', population: 1803 },
   ];
   const DataSet = require('@antv/data-set');
     export default {

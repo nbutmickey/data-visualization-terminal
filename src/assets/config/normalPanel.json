@@ -1,0 +1,29 @@
+[
+  {
+    "label": "statisticalDataSixTeen",
+    "text": "用户数据展示",
+    "graphStyle":[
+      { "label": "styleOne", "text": "基础环形图","bgurl":"../../static/bg-statistical/basicPine.JPG"}
+    ]
+  },
+  {
+    "label": "statisticalDataSevenTeen",
+    "text": "蜘蛛来访次数"
+  },
+  {
+    "label": "statisticalDataEightTeen",
+    "text": "请求来源页面TOP3"
+  },
+  {
+    "label": "statisticalDataNineTeen",
+    "text": "请求来源城市TOP3"
+  },
+  {
+    "label": "statisticalDataTwenty",
+    "text": "状态码数量TOP3"
+  },
+  {
+    "label": "statisticalDataTwentyOne",
+    "text": "最受欢迎页面TOP3"
+  }
+]

@@ -21,10 +21,10 @@
 <script>
   const DataSet = require('@antv/data-set');
   const data = [
-    { item: 'POST', count: 40 },
-    { item: 'GET', count: 21 },
-    { item: 'PUT', count: 17 },
-    { item: 'DELETE', count: 13 },
+    { item: 'TEST 1', count: 11140 },
+    { item: 'TEST 2', count: 22221 },
+    { item: 'TEST 3', count: 42417 },
+    { item: 'TEST 4', count: 45313 },
   ];
     export default {
         name: "index",

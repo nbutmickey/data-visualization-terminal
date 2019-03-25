@@ -1,0 +1,72 @@
+[
+  {
+    "label": "statisticalDataSeven",
+    "text": "请求方式数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }]
+  },
+  {
+    "label": "statisticalDataEight",
+    "text": "客户端浏览器类型及数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataNine",
+    "text": "客户端操作系统及数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataTen",
+    "text": "IP地址按省份数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataEleven",
+    "text": "HTTP状态码数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataTweleve",
+    "text": "客户端访问失败页面(TOP 5)数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataThirteen",
+    "text": "服务端访问失败页面(TOP 5)数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataFourteen",
+    "text": "访问频次较多页面(TOP 5)数量",
+    "graphStyle":[
+      { "label": "styleFive", "text": "简单柱状图","bgurl":"../../static/bg-statistical/simpleHistoGram.JPG" },
+      { "label": "styleSix", "text": "基础柱状图(纵向)","bgurl":"../../static/bg-statistical/basicBarChart.JPG" }
+    ]
+  },
+  {
+    "label": "statisticalDataFifteen",
+    "text": "网站近一年各月由于客户端和服务端访问失败的次数",
+    "graphStyle":[
+      { "label": "styleFour", "text": "分组柱状图","bgurl":"../../static/bg-statistical/group.JPG" }
+    ]
+  }
+]

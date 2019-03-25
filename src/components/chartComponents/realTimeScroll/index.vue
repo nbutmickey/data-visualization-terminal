@@ -4,7 +4,7 @@
         <div class="caption">
           <span>IP地址</span><span>目标页面</span><span>访问时间</span>
         </div>
-        <vue-seamless-scroll :data="listData" class="seamless-warp" :style="{height:templateType===5||templateType===1?'320px':'100px'}" :class-option="{step:0.5,hoverStop: false}">
+        <vue-seamless-scroll :data="listData" class="seamless-warp" :style="height" :class-option="{step:0.5,hoverStop: false}">
           <ul class="item">
             <li v-for="item in listData" class="itemClass" :style="{color:item.status===404?'red':'#2fc25b'}">
               <span v-text="item.ip"></span><span v-text="item.target"></span><span v-text="item.date"></span>
@@ -69,7 +69,18 @@
           }
         },
       computed:{
-        ...mapGetters(['templateType'])
+        ...mapGetters(['templateType','chooseRealTimeData']),
+        height(){
+            if(this.templateType===5||this.templateType===1){
+              if(this.chooseRealTimeData.length===2&&this.chooseRealTimeData.includes('record')){
+                return {height:'460px'};
+              }else{
+                return {height:'340px'};
+              }
+            }else{
+              return {height:'110px'};
+            }
+        }
       }
     }
 

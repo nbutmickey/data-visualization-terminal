@@ -31,6 +31,7 @@
           <div class="chooseOption">
             <el-select
               v-model="page"
+              @change="changePageType"
               placeholder="请选择需要分析的页面"
               size="mini"
               v-if="showAnalyzePage"
@@ -78,10 +79,14 @@
       </div>
       <div class="graph-pick-box" v-if="showgraphPickBox">
         <h6 style="margin-bottom: 8px;color: #F56C6C;">选取展示图表</h6>
-        <div style="padding: 20px 10px">
-          <el-radio-group v-model="currentGraphType" @change="changeGraph">
-            <el-radio v-for="(item,index) in graphType" :key="index" :label="item.label" border :disabled="item.disabled">{{item.text}}</el-radio>
+        <div style="padding: 10px">
+          <el-radio-group v-model="currentGraphType" @change="changeGraph" class="bgBox" size="mini">
+            <div class="bg-item" v-for="(item) in graphType" :key="item.id">
+              <div class="img"><img :src="item.bgurl"/></div>
+              <el-radio :label="item.label" :disabled="item.disabled">{{item.text}}</el-radio>
+            </div>
           </el-radio-group>
+
         </div>
       </div>
       <div class="confirm-pick-box">
@@ -114,27 +119,27 @@ export default {
       configSuccessPanel: false,
       isContinue: true,
       title: "",
-
+      type:'',
+      detailDate:'',
 
       pageOptions: [
-        "/mickey-nbut/index.html",
-        "/mickey-nbut/inde.html",
-        "/mickey-nbut/inde.html",
-        "/mickey-nbut/index.html",
-        "/mickey-nbut/index.html"
+        "/thread-28537-1-1.html",
+        "/login/index.html",
+        "/welcome/dispaly.php",
+        "/forum.php"
       ],
       trendDataOption:[
-        {label:"trendDataOne",disabled:false,text:"PV"},
+        {label:"trendDataOne",disabled:false,text:"总PV"},
         {label:"trendDataTwo",disabled:false,text:"页面PV"},
         {label:"trendDataThree",disabled:false,text:"客户端访问失败PV"},
         {label:"trendDataFour",disabled:false,text:"服务端访问失败PV"},
         {label:"trendDataFive",disabled:false,text:"搜索引擎抓取页面数"},
       ],
       graphType:[
-        {label:"styleOne",disabled:false,text:"基础折线图"},
-        {label:"styleTwo",disabled:false,text:"基础面积图"},
-        {label:"styleThree",disabled:false,text:"曲线折线图"},
-        {label:"styleFour",disabled:false,text:"基础阶梯图"},
+        {label:"styleOne",disabled:false,text:"曲线折线图",bgurl:'../../static/bg-trend/curveChart.JPG'},
+        {label:"styleTwo",disabled:false,text:"基础面积图",bgurl:'../../static/bg-trend/areaChart.JPG'},
+        {label:"styleThree",disabled:false,text:"基础折线图",bgurl:'../../static/bg-trend/basicLineChart.JPG'},
+        {label:"styleFour",disabled:false,text:"基础阶梯图",bgurl:'../../static/bg-trend/stepLineChart.JPG'},
       ]
     };
   },
@@ -144,7 +149,6 @@ export default {
   methods: {
     //选取的展现数据改变的触发函数
     changeTrendData(val) {
-
       if (val === "trendDataOne") {
         this.title = `PV`;
       } else if (val === "trendDataTwo") {
@@ -172,16 +176,26 @@ export default {
       let DD = date.getDate();
       if (this.dateType === 1) {
         this.title = YY + "年各月" + this.title;
+        this.type='month';
+        this.detailDate=`${YY}`;
       } else if (this.dateType === 2) {
         this.title = YY + "年" + (MM+1) + "月份" + this.title;
+        this.type='day';
+        this.detailDate=`${YY}-${MM+1}`
       } else if (this.dateType === 3) {
         this.title = YY + "年" + (MM+1) + "月" + DD + "日" + this.title;
+        this.type='hour';
+        this.detailDate=`${YY}-${MM+1}-${DD}`
       }
       this.showgraphPickBox = true;
     },
     //选择展示图表触发
     changeGraph() {
       this.isContinue = false;
+    },
+    //页面选取之后
+    changePageType(){
+      this.title=this.page+this.title;
     },
     //继续选择展现数据按钮触发
     continueButton() {
@@ -190,6 +204,8 @@ export default {
         showTitle: this.title,
         fetchDataType: this.chooseTrendData,
         graphStyle: this.currentGraphType,
+        type:this.type,
+        detailDate:this.detailDate,
         page: this.page
       };
       //当用户继续选择的时候，要disabled掉展现数据已选中的项，防止误选和多选。
@@ -271,7 +287,34 @@ export default {
   margin-bottom: 15px;
 }
 .graph-pick-box {
-  height: 250px;
+  //height: 320px;
+  .bgBox{
+    width: 100%;
+    height: 70%;
+    /*padding-top: 20px;*/
+    padding-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    .bg-item{
+      .img{
+        margin-bottom: 10px;
+        img {
+          width: 180px;
+          height: 80px;
+          border-radius: 5px;
+          box-shadow: 1px 1px 2px 2px #A9A9A9;
+        }
+      }
+      margin-bottom: 12px;
+      width: 200px;
+      height: 100px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 .confirm-pick-box {
   display: flex;

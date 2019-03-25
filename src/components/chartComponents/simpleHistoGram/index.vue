@@ -5,7 +5,7 @@
     <v-chart :width="width" :height="height" :data="sourceData" :padding="padding">
       <v-tooltip />
       <v-axis data-key="year" :label="label"/>
-      <v-axis data-key="sales" :label="label" :grid="null"/>
+      <v-axis data-key="sales" :label="label" :line="{strokeOpacity:1}" :tickLine="{strokeOpacity:1}" :grid="null"/>
       <v-bar position="year*sales" />
     </v-chart>
   </div>
@@ -13,14 +13,18 @@
 
 <script>
   const data = [
-    { year: '1951', sales: 38 },
-    { year: '1952', sales: 52 },
-    { year: '1956', sales: 61 },
-    { year: '1957', sales: 145 },
-    { year: '1958', sales: 48 },
-    { year: '1959', sales: 38 },
-    { year: '1960', sales: 38 },
-    { year: '1962', sales: 38 },
+    { year: 'test1', sales: 534 },
+    { year: 'test2', sales: 352 },
+    { year: 'test3', sales: 361 },
+    { year: 'test4', sales: 145 },
+    { year: 'test5', sales: 438 },
+    { year: 'test6', sales: 367 },
+    { year: 'test7', sales: 323 },
+    { year: 'test8', sales: 333 },
+    { year: 'test9', sales: 445 },
+    { year: 'test10', sales: 167 },
+    { year: 'test11', sales: 212 },
+    { year: 'test12', sales: 438 },
   ];
     export default {
         name: "index",

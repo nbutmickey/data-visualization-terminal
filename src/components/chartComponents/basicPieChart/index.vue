@@ -62,16 +62,16 @@
         },
         mounted(){
           const data = [
-            { item: 'Linux', count: 40 },
-            { item: 'Windows', count: 21 },
-            { item: 'IOS', count: 17 },
-            { item: 'UNIX', count: 13 },
+            { item: 'TEST 1', count: 64540 },
+            { item: 'TEST 2', count: 64621 },
+            { item: 'TEST 3', count: 6547 },
+            { item: 'TEST 4', count: 4413 },
           ];
           const data2 = [
-            { item: 'Chrome', count: 170 },
-            { item: 'Safari', count: 40 },
-            { item: 'FireFox', count: 27 },
-            { item: 'Edge', count: 43 },
+            { item: 'TEST 1', count: 7170 },
+            { item: 'TEST 2', count: 3440 },
+            { item: 'TEST 3', count: 7827 },
+            { item: 'TEST 4', count: 3343 },
           ];
           this.sourceData=new DataSet.View().source(data).transform({
             type: 'percent',

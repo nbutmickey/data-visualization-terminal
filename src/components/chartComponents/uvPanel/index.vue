@@ -1,7 +1,7 @@
 <template>
   <!--访问IP总量（UV）展示面板-->
-  <div class="uv-box" :style="{width:templateType===1||templateType===5?'100%':'45%'}">
-    <div class="title">UV</div>
+  <div class="uv-box" :style="{width:width?'100%':'45%'}">
+    <div class="title">日访客量(UV)</div>
     <div class="number">{{uvNumber}}</div>
   </div>
 </template>
@@ -12,14 +12,31 @@
     name: "index",
     data(){
       return {
-        uvNumber:234345
+        uvNumber:2345,
       }
     },
     computed:{
-      ...mapGetters(['templateType'])
+      ...mapGetters(['templateType','chooseRealTimeData']),
+      width(){
+        if(this.templateType===1||this.templateType===5){
+          if(this.chooseRealTimeData.length===2&&this.chooseRealTimeData.includes('record')){
+            return true;
+          }
+          return true;
+        }else{
+          if(this.chooseRealTimeData.length===2&&this.chooseRealTimeData.includes('record')){
+            return true;
+          }else{
+            return false;
+          }
+        }
+      }
     },
     mounted(){
+      //console.log('mounted');
+      //console.log(this.chooseRealTimeData);
       setInterval(()=>{this.uvNumber++},1000);
+
     },
     methods:{
 
@@ -43,7 +60,8 @@
     .number{
       width: 100%;
       height: 50%;
-      font-size: 30px;
+      font-size: 40px;
+      font-family: Digital;
       font-weight: 700;
       color: rgb(255, 255, 67);
       text-overflow: ellipsis;

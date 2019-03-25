@@ -9,19 +9,33 @@
   <div v-if="!configSuccessPanel">
     <div class="data-pick-box">
       <h6 style="margin-bottom: 8px;color: #F56C6C">选取展示数据</h6>
-      <el-radio-group
-        v-model="chooseStatisticalData"
-        @change="changeStatisticalData"
-        size="mini"
-      >
-        <el-radio v-for="(item,index) in statisticalDataOption":key="index"  :label="item.label" border :disabled="item.disabled" border>{{item.text}}</el-radio>
-      </el-radio-group>
+      <el-tabs v-model="activeName" @tab-click="handleClickTab">
+        <el-tab-pane label="占比类" name="first">
+          <el-radio-group v-model="chooseStatisticalData" @change="changeProportionData" size="mini">
+            <el-radio v-for="(item,index) in proportionJson":key="index"  :label="item.label" border :disabled="item.disabled" border>{{item.text}}</el-radio>
+          </el-radio-group>
+        </el-tab-pane>
+        <el-tab-pane label="数量类" name="second">
+          <el-radio-group v-model="chooseStatisticalData" @change="changeNumberData" size="mini">
+            <el-radio v-for="(item,index) in numberJson":key="index"  :label="item.label" border :disabled="item.disabled" border>{{item.text}}</el-radio>
+          </el-radio-group>
+        </el-tab-pane>
+        <el-tab-pane label="面板类" name="third">
+          <el-radio-group v-model="chooseStatisticalData" @change="changePanelData" size="mini">
+            <el-radio v-for="(item,index) in normalPanelJson":key="index"  :label="item.label" border :disabled="item.disabled" border>{{item.text}}</el-radio>
+          </el-radio-group>
+        </el-tab-pane>
+      </el-tabs>
+
     </div>
     <div class="graph-pick-box" v-if="showgraphPickBox">
       <h6 style="margin-bottom: 8px;color: #F56C6C;">选取展示图表</h6>
-      <div style="padding: 20px 10px">
-        <el-radio-group v-model="currentGraphType" @change="changeGraph">
-          <el-radio v-for="(item,index) in graphType" :key="index" :label="item.label" border :disabled="item.disabled">{{item.text}}</el-radio>
+      <div style="padding:0 10px 0 10px">
+        <el-radio-group v-model="currentGraphType"  @change="changeGraph" class="bgBox" size="mini">
+          <div class="bg-item" v-for="(item) in graphType" :key="item.id">
+            <div class="img"><img :src="item.bgurl"/></div>
+            <el-radio :label="item.label">{{item.text}}</el-radio>
+          </div>
         </el-radio-group>
       </div>
     </div>
@@ -40,90 +54,112 @@
 
 <script>
   import{ mapGetters } from 'vuex'
+  import graphStyleJson from '@/assets/config/graphStyle.json'
+  import normalPanelJson  from '@/assets/config/normalPanel.json'
+  import numberJson from '@/assets/config/number.json'
+  import proportionJson from '@/assets/config/proportion.json'
     export default {
         name: "index",
         data(){
           return {
             title:"",
+            activeName:"first",
             chooseStatisticalData:"",
             currentGraphType:"",
             isContinue:true,
             showgraphPickBox:false,
             configSuccessPanel:false,
 
-            statisticalDataOption:[
-              {label:'statisticalDataOne',disabled:false,text:'请求方式数量占比'},
-              {label:'statisticalDataOneTwo',disabled:false,text:'客户端浏览器、操作系统占比'},
-              {label:'statisticalDataOneThree',disabled:false,text:'IP地址省份和数量占比'},
-              {label:'statisticalDataOneFour',disabled:false,text:'HTTP状态码数量占比'},
-              {label:'statisticalDataOneFive',disabled:false,text:'访问失败最多的页面(TOP 5)'},
-              {label:'statisticalDataOneSix',disabled:false,text:'访问频次最多的页面(TOP 5)'},
-            ],
-            graphType:[
-              {label:'styleOne',disabled:false,text:'基础环形图'},
-              {label:'styleTwo',disabled:false,text:'基础饼图'},
-              {label:'styleThree',disabled:false,text:'分组条形图'},
-              {label:'styleFour',disabled:false,text:'分组柱状图'},
-              {label:'styleFive',disabled:false,text:'简单柱状图'},
-              {label:'styleSix',disabled:false,text:'基础柱状图(纵向)'},
-            ]
+            normalPanelJson:[],
+            proportionJson:[],
+            numberJson:[],
+            graphType:[]
           }
+        },
+        created(){
+          this.normalPanelJson=normalPanelJson;
+          this.proportionJson=proportionJson;
+          this.numberJson=numberJson;
         },
         computed:{
           ...mapGetters(['templateType','statisticalType'])
         },
-        methods:{
-          changeStatisticalData(val){
-            //暂时不做根据选择的展示数据之后限制住对应的图表
-            this.statisticalDataOption.forEach((item)=>{
-
-              if(item.label===val){
-                this.title=item.text;
+        methods: {
+          handleClickTab(){
+            if(this.activeName==='first'){
+              this.graphType=graphStyleJson.proportion;
+            }else if(this.activeName==='second'){
+              this.graphType=graphStyleJson.number;
+            }else{
+              this.graphType=graphStyleJson.normalPanel
+            }
+          },
+          changeProportionData(val) {
+            this.graphType=graphStyleJson.proportion;
+            this.proportionJson.forEach(item => {
+              if (item.label === val) {
+                this.title = item.text;
               }
             })
-            this.showgraphPickBox=true;
+            this.showgraphPickBox = true;
           },
-          changeGraph(val){
-            this.isContinue=false;
+          changeNumberData(val) {
+            this.numberJson.forEach(item => {
+              if (item.label === val) {
+                this.title = item.text;
+              }
+            })
+            this.showgraphPickBox = true;
           },
-          continueButton(){
-              let config = {
-                showTitle: this.title,
-                fetchDataType: this.chooseStatisticalData,
-                graphStyle: this.currentGraphType,
-              };
+          changePanelData(val) {
+            this.normalPanelJson.forEach(item => {
+              if (item.label === val) {
+                this.title = item.text;
+              }
+            })
+            this.showgraphPickBox = true;
+          },
 
+          changeGraph(val) {
+            this.isContinue = false;
+          },
+          continueButton() {
+            let config = {
+              showTitle: this.title,
+              fetchDataType: this.chooseStatisticalData,
+              graphStyle: this.currentGraphType,
+            };
             //针对每一种模板类型，设定预设好的图表长宽来呈现，并控制展示数量。
             switch (this.templateType) {
               case 1:
                 //最多3个
                 this.$store.commit("SET_STATISTICAL_TYPE", config);
-                this.$store.commit("SET_STATISTICAL_LAYOUT", { width: 440, height: 200 });
-                if (this.statisticalType.length ===3) {
+                this.$store.commit("SET_STATISTICAL_LAYOUT", {width: 440, height: 200});
+                if (this.statisticalType.length === 3) {
                   this.configSuccessPanel = true;
                 }
                 break;
               case 2:
                 //最多3个
                 this.$store.commit("SET_STATISTICAL_TYPE", config);
-                this.$store.commit("SET_STATISTICAL_LAYOUT", { width: 530, height: 200 });
-                if (this.statisticalType.length ===3) {
+                this.$store.commit("SET_STATISTICAL_LAYOUT", {width: 530, height: 200});
+                if (this.statisticalType.length === 3) {
                   this.configSuccessPanel = true;
                 }
                 break;
               case 3:
                 //最多3个
                 this.$store.commit("SET_STATISTICAL_TYPE", config);
-                this.$store.commit("SET_STATISTICAL_LAYOUT", { width: 530, height: 200 });
-                if (this.statisticalType.length ===3) {
+                this.$store.commit("SET_STATISTICAL_LAYOUT", {width: 530, height: 200});
+                if (this.statisticalType.length === 3) {
                   this.configSuccessPanel = true;
                 }
                 break;
               case 4:
                 //最多1个
                 this.$store.commit("SET_STATISTICAL_TYPE", config);
-                this.$store.commit("SET_STATISTICAL_LAYOUT", { width: 490, height: 290 });
-                if (this.statisticalType.length ===2) {
+                this.$store.commit("SET_STATISTICAL_LAYOUT", {width: 490, height: 290});
+                if (this.statisticalType.length === 2) {
                   this.configSuccessPanel = true;
                 }
                 break;
@@ -131,15 +167,15 @@
               case 5:
                 //最多3个
                 this.$store.commit("SET_STATISTICAL_TYPE", config);
-                this.$store.commit("SET_STATISTICAL_LAYOUT", { width: 360, height: 290 });
-                if (this.statisticalType.length ===2) {
+                this.$store.commit("SET_STATISTICAL_LAYOUT", {width: 360, height: 290});
+                if (this.statisticalType.length === 2) {
                   this.configSuccessPanel = true;
                 }
                 break;
             }
             this.showgraphPickBox = false;
             this.chooseStatisticalData = '';
-           // this.configSuccessPanel=true;
+            // this.configSuccessPanel=true;
           }
         }
     }
@@ -157,11 +193,38 @@
    }
   .graph-pick-box {
     margin-bottom: 15px;
-    .el-radio {
-      margin-bottom: 5px;
+    .bgBox{
+      width: 100%;
+      height: 70%;
+      padding-top: 5px;
+      padding-left: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      .bg-item{
+        .img{
+          margin-bottom: 5px;
+          img {
+            width: 180px;
+            height: 80px;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px 2px #A9A9A9;
+          }
+        }
+        width: 205px;
+        height: 100px;
+        margin-bottom: 14px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
     }
-    .el-radio.is-bordered+.el-radio.is-bordered {
-      margin-left: 0 !important;
-    }
+    /*.el-radio {*/
+      /*margin-bottom: 5px;*/
+    /*}*/
+    /*.el-radio.is-bordered+.el-radio.is-bordered {*/
+      /*margin-left: 0 !important;*/
+    /*}*/
   }
 </style>
