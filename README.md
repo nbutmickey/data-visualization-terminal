@@ -1,4 +1,4 @@
-# data-visualization-terminal
+# 可视化数据大屏控制端
 
 > A Vue.js project
 
